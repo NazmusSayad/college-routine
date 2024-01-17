@@ -71,7 +71,7 @@ const index = () => {
     const img = imgUrl || (await getPicture(data))
     if (!img) return
     setImgUrl(img || '')
-    download(img, 'routine.png')
+    download(img, 'routine.jpg')
   }
 
   async function getPicture(data: Partial<Data>) {
