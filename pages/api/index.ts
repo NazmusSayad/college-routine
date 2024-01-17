@@ -23,7 +23,7 @@ export default async (req: any, res: any) => {
 
   const element = await page.$('main')
   const output =
-    element && (await element.screenshot({ encoding: 'base64', type: 'png' }))
+    element && (await element.screenshot({ encoding: 'base64', quality: 100, type: 'jpeg' }))
 
   res.send('data:image/png;base64,' + output)
   await browser.close()
