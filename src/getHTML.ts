@@ -1,10 +1,8 @@
 import fs from 'fs'
-import path from 'path'
-import { Data } from './config'
-const templatePath = path.join(__dirname, './template.html')
-const templateContent = fs.readFileSync(templatePath, 'utf8')
+import config, { Data } from './config'
+const templateContent = fs.readFileSync(config.templatePath, 'utf8')
 
-export default function (data: Data) {
+export default function (data: Data, watermark: string) {
   const sections = Object.entries(data).map(([day, subjects]) => {
     if (!subjects) return ''
 
@@ -21,7 +19,7 @@ export default function (data: Data) {
           </tr>
           ${subjects
             .map(
-              ({ startTime, name, room }) => `
+              ({ time: startTime, name, room }) => `
                 <tr>
                   <td>${startTime}</td>
                   <td>${name}</td>
@@ -34,8 +32,10 @@ export default function (data: Data) {
     </section>`
   })
 
-  return templateContent.replace(
-    /(<!--START-->)(.|\s)*?(<!--END-->)/,
-    sections.join('')
-  )
+  return templateContent
+    .replace('<!--WATERMARK-->', watermark)
+    .replace(
+      /(<!--CONTENT-START-->)(.|\s)*?(<!--CONTENT-END-->)/,
+      sections.join('')
+    )
 }

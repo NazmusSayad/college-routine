@@ -2,8 +2,7 @@
   "scripts": {
     "tsc": "tsc --watch",
     "dev": "run ./src/index.ts",
-    "build": "tsx ./src/index.ts",
-    "lab": "run ./src/__lab__.ts"
+    "build": "tsc && node ./dist/index.js"
   },
   "dependencies": {
     "@puppeteer/browsers": "^2.4.0",

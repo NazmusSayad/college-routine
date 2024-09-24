@@ -1,6 +1,5 @@
 import path from 'path'
 import * as browsers from '@puppeteer/browsers'
-import { convertBytesToUnit } from './utils'
 const CACHE_DIR = path.join(process.cwd(), '.cache', 'puppeteer')
 
 export default async function (browser: browsers.Browser) {
@@ -37,4 +36,17 @@ export default async function (browser: browsers.Browser) {
 
   if (isBrowserDownloading) console.log('')
   return installedBrowser.executablePath
+}
+
+function convertBytesToUnit(bytes: number): string {
+  const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+  let index = 0
+  let value = bytes
+
+  while (value >= 1024 && index < units.length - 1) {
+    value /= 1024
+    index++
+  }
+
+  return `${value.toFixed(2)} ${units[index]}`
 }
