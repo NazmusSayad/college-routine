@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "tsc": "tsc --watch",
+    "dev": "run ./src/index.ts",
+    "build": "tsx ./src/index.ts",
+    "lab": "run ./src/__lab__.ts"
+  },
+  "dependencies": {
+    "@puppeteer/browsers": "^2.4.0",
+    "puppeteer-core": "^23.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.6.1",
+    "typescript": "^5.6.2"
+  }
+}
