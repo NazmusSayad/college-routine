@@ -2,7 +2,7 @@ import fs from 'fs'
 import config, { Data } from './config'
 const templateContent = fs.readFileSync(config.templatePath, 'utf8')
 
-export default function (data: Data, watermark: string) {
+export default function (data: Data, watermark: string, footer: string) {
   const sections = Object.entries(data).map(([day, subjects]) => {
     if (!subjects) return ''
 
@@ -34,6 +34,7 @@ export default function (data: Data, watermark: string) {
 
   return templateContent
     .replace('<!--WATERMARK-->', watermark)
+    .replace('<!--FOOTER-TEXT-->', footer)
     .replace(
       /(<!--CONTENT-START-->)(.|\s)*?(<!--CONTENT-END-->)/,
       sections.join('')

@@ -1,8 +1,9 @@
+import config from '../config'
 import puppeteer from 'puppeteer-core'
-import { Browser } from '@puppeteer/browsers'
 import getBrowserPath from './getBrowserPath'
+import { Browser } from '@puppeteer/browsers'
 
-const viewport = { width: 1920, height: 1080 }
+const viewport = { width: config.imageWidth, height: 10000 }
 
 export default async function (content: string) {
   const browser = await puppeteer.launch({

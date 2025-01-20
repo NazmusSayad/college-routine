@@ -2,14 +2,16 @@
   "scripts": {
     "tsc": "tsc --watch",
     "dev": "run ./src/index.ts",
-    "build": "tsc && node ./dist/index.js"
+    "build": "tsx ./src/index.ts"
   },
   "dependencies": {
-    "@puppeteer/browsers": "^2.4.0",
-    "puppeteer-core": "^23.4.0"
+    "@puppeteer/browsers": "^2.7.0",
+    "puppeteer-core": "^23.11.1"
   },
   "devDependencies": {
-    "@types/node": "^22.6.1",
-    "typescript": "^5.6.2"
+    "@types/node": "^22.10.7",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "uni-run": "^1.1.20"
   }
 }

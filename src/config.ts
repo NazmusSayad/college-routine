@@ -10,6 +10,8 @@ export type SubjectData = {
 }
 
 export default {
+  imageWidth: 2040,
   outPath: path.join(__dirname, '../out/routine.png'),
+  htmlOutPath: path.join(__dirname, '../out/routine.html'),
   templatePath: path.join(__dirname, '../lib/template.html'),
 }

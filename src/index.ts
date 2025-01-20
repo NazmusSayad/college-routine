@@ -1,17 +1,19 @@
 import fs from 'fs'
 import path from 'path'
-import browser from './browser'
 import data from './data'
-import getHTML from './getHTML'
 import config from './config'
+import browser from './browser'
+import getHTML from './getHTML'
 ;(async () => {
-  const image = await browser(getHTML(data.routine, data.watermark))
-  console.log('Routine image generated successfully!')
-
   const OUT_DIR = path.dirname(config.outPath)
   if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true })
-  fs.writeFileSync(config.outPath, image)
 
+  const html = getHTML(data.routine, data.watermarkText, data.footerText)
+  fs.writeFileSync(config.htmlOutPath, html)
+  console.log('Routine HTML generated successfully!')
+
+  const image = await browser(html)
+  console.log('Routine image generated successfully!')
+  fs.writeFileSync(config.outPath, image)
   console.log('Routine image saved successfully!')
-  console.log(config.outPath)
 })()
