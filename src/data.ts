@@ -13,6 +13,7 @@ const subjects = {
 
 export default {
   watermarkText: '5/1/CST',
+
   footerText: 'সবাই যথা সময়ে উপস্থিত হবেন!',
 
   routine: as<Data>({

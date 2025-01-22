@@ -1,14 +1,13 @@
 import fs from 'fs'
 import path from 'path'
-import data from './data'
 import config from './config'
 import browser from './browser'
-import getHTML from './getHTML'
+import templateHtml from './templateHtml'
 ;(async () => {
   const OUT_DIR = path.dirname(config.outPath)
   if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true })
 
-  const html = getHTML(data.routine, data.watermarkText, data.footerText)
+  const html = templateHtml()
   fs.writeFileSync(config.htmlOutPath, html)
   console.log('Routine HTML generated successfully!')
 
